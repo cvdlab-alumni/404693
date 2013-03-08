@@ -1,0 +1,9 @@
+var array =
+
+array
+	.filter (function (element){
+		return element %2 === 0;	})
+	.map (function (item,index,array) {
+		return item %2 ===1	});
+	.filter (function
+	
