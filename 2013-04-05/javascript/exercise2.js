@@ -77,7 +77,6 @@ var bathroom_curve = T([1,2,3])([93.25+10, 50, 6])(curve1);
 var bathroom = STRUCT([bathroom0, bathroom_curve]);
 
 var floor0 = STRUCT([access,living_room, room, bathroom]);
-VIEW(floor0)
 
 //Floor1
 
@@ -89,24 +88,23 @@ var room = STRUCT([room0, room1,room2,room3]);
 
 var balcony = GRID([[5],[-47.5, 12.5, -7],[-height-7, 1]]);
 var floor1 = STRUCT([balcony, room]);
-VIEW(floor1)
 
 //Floor2
 var room0 = GRID([[-5, 16.75, -60, 37],[-5, 45+12.5],[-2*height-8, 1]]);
 var room1 = GRID([[-21.75, 60],[-5,45,-10,2.5],[-2*height-8, 1]]);
 var floor2 = STRUCT([room0, room1]);
-VIEW(floor2)
 
 //Floor3
 var room0 = GRID([[-5, 2.5, -51.87, 2.5, -30, 26.88],[-5, 42.5+12.5],[-3*height-9, 1]]);
-DRAW(room0);
 var room1 = GRID([[-61.87, 30],[-5,45,-10,2.5],[-3*height-9, 1]]);
 var room2 = GRID([[-5, 113.75],[-5,2.5,-52.5,2.5],[-3*height-9, 1]]);
 var floor3 = STRUCT([room0, room1, room2]);
-VIEW(floor3)
 
 //Floor4
+var room0 = GRID([[-5, 2.5, -51.87, 59.38],[-5, 57.5],[-4*height-10, 1]]);
+var room1 = GRID([[-7.5, 51.87],[-5,2.5,-40,15],[-4*height-10, 1]]);
+var floor4 = STRUCT([room0, room1]);
 
 // View
-//var building = STRUCT([floor0, floor1, floor2, floor3]);
-//VIEW(building);
+var building = STRUCT([floor0, floor1, floor2, floor3, floor4]);
+VIEW(building);
