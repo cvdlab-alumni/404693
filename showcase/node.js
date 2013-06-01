@@ -20,7 +20,6 @@
 
   var scmodel = (function () {
 ////////////////////////////////////////////
-
 //  Modellazione di una spada vichinga
 
 var domain = PROD1x1([INTERVALS(1)(64),INTERVALS(1)(64)]);
@@ -157,22 +156,22 @@ function lama() {
   var s = STRUCT([s1, s2]);
 
 //  Punta
-  var up = BEZIER(S0)([[-2.5,h,0],[-1,h,0.2]]);
+  var up = BEZIER(S0)([[-2.5,h,0],[-0.95,h,0.2]]);
   var dw = BEZIER(S0)([[-2.5,h-2,0],[0,h-2,0.2]]);
   var lf = BEZIER(S1)([[-2.5,h,0],[-2.5,h-2,0]]);
-  var rg = BEZIER(S1)([[-1,h,0.2],[-1,h-1.1,0.2],[0,h-2,0.2]]);
+  var rg = BEZIER(S1)([[-0.95,h,0.2],[-0.9,h-0.75,0.2],[0,h-2,0.2]]);
   var p0 = MAP(COONS_PATCH([up,dw,lf,rg]))(domain);
   var p1 = R([0,2])(PI)(p0);
   
-  var up = BEZIER(S0)([[-2.5,h-2,0],[2.5,h-2,0.2],[2.5,h-2,0]]);
+  var up = BEZIER(S0)([[-2.5,h-2,0],[0,h-2,0.4],[2.5,h-2,0]]);
   var dw = BEZIER(S0)([[-2.5,h-4,0],[0,h-20,0],[2.5,h-4,0]]);
   var p2 = MAP(BEZIER(S1)([up,dw]))(domain);
   var p3 = R([0,2])(PI)(p2);
 
-  var up = BEZIER(S0)([[2.5,h,0],[1,h,0.2]]);
+  var up = BEZIER(S0)([[2.5,h,0],[0.9,h,0.2]]);
   var dw = BEZIER(S0)([[2.5,h-2,0],[0,h-2,0.2]]);
   var lf = BEZIER(S1)([[2.5,h,0],[2.5,h-2,0]]);
-  var rg = BEZIER(S1)([[1,h,0.2],[1,h-1.1,0.2],[0,h-2,0.2]]);
+  var rg = BEZIER(S1)([[0.95,h,0.2],[0.9,h-0.75,0.2],[0,h-2,0.2]]);
   var p4 = MAP(COONS_PATCH([up,dw,lf,rg]))(domain);
   var p5 = R([0,2])(PI)(p4);
 
