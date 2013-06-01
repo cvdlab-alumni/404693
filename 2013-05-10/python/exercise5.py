@@ -224,7 +224,7 @@ def parabrezza()    :
     S0v = BEZIER(S2)([[5,4,-3.5],[3.3, 4.9,-4],[2,5,-3]])
     S1v = BEZIER(S2)([[5,4, 3.5],[3.3, 4.9, 4],[2,5,3]])
     parabrezza = S([1,2,3])([0.33,0.33,0.33])(MAP(COONSPATCH([Su1,Su0,S0v,S1v])) (domain))
-    return COLOR([1,0.55,0.4])(parabrezza)
+    return Color4f([1.0, 0.5, 1.0, 0.6])(parabrezza)
 
 def doors()  :
     Su0 = BEZIER(S1)([[4,4,-4],[-2.5,3.5,-3]])
