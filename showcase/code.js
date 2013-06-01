@@ -40,8 +40,8 @@ function pomo(){
 	var base6 = T([0])([5.5])(R([0,2])(PI)(base5));	
 	var base = STRUCT([base1, base2, base3, base4, base5, base6]);
 
-	var out = STRUCT([petaloc, petalos, petalod, base]);
-	return COLOR([0.82,0.82,0.82])(T([0,1])([-2.75,1.13])(out));
+	var pomo = STRUCT([petaloc, petalos, petalod, base]);
+	return COLOR([0.82,0.82,0.82])(T([0,1])([-2.75,1.13])(pomo));
 }
 function TuboAng(Rag,rag, z) {
 	var c1 = CUBIC_HERMITE(S0)([[Rag,0,0],[0,Rag,0],[0,1.7*Rag,0],[-1.7*Rag,0,0]]);
@@ -65,8 +65,8 @@ function impugnatura(){
 	var mapping = ROTATIONAL_SURFACE(profile);
 	var imp = T([1])([-0.3])(R([1,2])(PI/2)(COLOR([0.58,0.29,0]) ( MAP(mapping)(rotdom) )));
 
-	var out = STRUCT([l1,l2,l3,l4, imp]);
-	return out;
+	var impugnatura = STRUCT([l1,l2,l3,l4, imp]);
+	return impugnatura;
 }
 function paramano(){
 	var up = BEZIER(S0)([[-4.5,1,1],[0,2,1],[4.5,1,1]]);
@@ -155,12 +155,65 @@ function lama()	{
 
 	var p = STRUCT([p0,p1,p2,p3,p4,p5]);
 
-	var out = T([1])([-14])(STRUCT([s, l, p]) );
-	return out;
+	var lama = T([1])([-14])(STRUCT([s, l, p]) );
+	return lama;
+}
+
+function fodero(){
+	var h = -65;
+
+	var c0 = BEZIER(S0)([[-3,0,0],[0,0,2],[3,0,0]]);
+	var c1 = BEZIER(S0)([[-2.7,0,0],[0,0,1.5],[2.7,0,0]]);
+	var f1 = MAP(BEZIER(S1)([c0,c1]))(domain);
+	var f2 = R([0,2])(PI)(f1);
+
+	var f3 = STRUCT([f1,f2]);
+	var f4 = STRUCT([f3, T([1])([-4])(f3)]);
+
+	var c0b = BEZIER(S0)([[-3,-4,0],[0,-4,2],[3,-4,0]]);
+	var c1b = BEZIER(S0)([[-2.7,-4,0],[0,-4,1.5],[2.7,-4,0]]);
+	var f5 = MAP(BEZIER(S1)([c0,c0b]))(domain);
+	var f6 = MAP(BEZIER(S1)([c1,c1b]))(domain);
+
+	var fa = STRUCT([f5,f6]);
+	var fb = STRUCT([fa , R([0,2])(PI)(fa)]);
+
+	var f = STRUCT([fb, f4]);
+//	legno
+	var c0 = BEZIER(S0)([[-3,-4,0],[0,-4,2],[3,-4,0]]);
+	var c1 = BEZIER(S0)([[-2.7,-4,0],[0,-4,1.5],[2.7,-4,0]]);
+	var l1 = MAP(BEZIER(S1)([c0,c1]))(domain);
+	var l2 = R([0,2])(PI)(l1);
+
+	var l3 = STRUCT([l1,l2]);
+	var l4 = STRUCT([l3, T([1])([h])(l3)]);
+
+	var c0b = BEZIER(S0)([[-3,h-4,0],[0,h-4,2],[3,h-4,0]]);
+	var c1b = BEZIER(S0)([[-2.7,h-4,0],[0,h-4,1.5],[2.7,h-4,0]]);
+	var l5 = MAP(BEZIER(S1)([c0,c0b]))(domain);
+	var l6 = MAP(BEZIER(S1)([c1,c1b]))(domain);
+
+	var la = STRUCT([l5,l6]);
+	var lb = STRUCT([la , R([0,2])(PI)(la)]);
+
+	var l = COLOR([0.6,0.3,0])(STRUCT([lb, l4]));
+// Punta fodero
+	var up = BEZIER(S0)([[-3,h-4,0],[0,h-4,2],[3,h-4,0]]);
+	var dw = BEZIER(S0)([[-3,h-4,0],[0,h-20,0],[3,h-4,0]]);
+	var p1 = MAP(BEZIER(S1)([up,dw]))(domain);
+	var p2 = R([0,2])(PI)(p1);
+	var up = BEZIER(S0)([[-2.7,h-4,0],[0,h-4,2],[2.7,h-4,0]]);
+	var dw = BEZIER(S0)([[-2.7,h-4,0],[0,h-25,0],[2.7,h-4,0]]);
+	var p3 = MAP(BEZIER(S1)([up,dw]))(domain);
+	var p4 = R([0,2])(PI)(p1);
+	var p = STRUCT([ p1,p2,p3,p4 ]);
+
+	var fodero = STRUCT([f,l,p]);
+	return fodero;
 }
 
 function spada()	{
-	return STRUCT([elsa(), lama()]);
+	return STRUCT([elsa(), lama(), T([0,1])([10,-12])(fodero()) ]);
 }
 
 var model = spada();
