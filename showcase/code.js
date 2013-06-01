@@ -1,6 +1,6 @@
 //	Modellazione di una spada vichinga
 
-var domain = PROD1x1([INTERVALS(1)(64),INTERVALS(1)(64)]);
+var domain = PROD1x1([INTERVALS(1)(32),INTERVALS(1)(32)]);
 
 function pomo(){
 //	Petali del pomo
