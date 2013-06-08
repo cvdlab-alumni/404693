@@ -138,6 +138,21 @@ var cartina = STRUCT([ dtmlt(), settlement(0,0,5), settlement(-3,18,3) ]);
 //DRAW(cartina);
 
 function road(l,m){
+	var dom = DOMAIN([[0,1], [0,1], [0,1]])([10, 10, 10]);
+	h = 2;
+	var c0 = [[0,0,5],[l,0,-1]];
+	var c1 = [[0,m,5],[l,m,-1]];
+	var c0_b = c0.map(function (p) {return [p[0],p[1],p[2]-h] });
+	var c1_b = c1.map(function (p) {return [p[0],p[1],p[2]-h] });
+
+	var d0 = BEZIER(S0)(c0);
+	var d1 = BEZIER(S0)(c1);
+	var d2 = BEZIER(S0)(c0_b);
+	var d3 = BEZIER(S0)(c1_b);
+	var fup = BEZIER(S1)([d0,d1]);
+	var fdw = BEZIER(S1)([d2,d3]);
+	var road = MAP( BEZIER(S2)([fup,fdw]) ) (dom);
+	
 	var road = CUBOID([l,m,2]);
 	return COLOR([0,0,0])(road);
 }
@@ -145,10 +160,10 @@ function road(l,m){
 function roads(c,d,n,l){
 	var strada = road(l,0.9);
 	var parallela = R([0,1])(PI/2)(road(l*0.95,0.5));
-	var roads1 = STRUCT(REPLICA(4)([T([0,1,2])([40-c,39.2-d,0])(strada), T([1])([2.8])]));
-	var roads2 = STRUCT(REPLICA(n)([T([0,1,2])([40-c,39-d,0])(parallela), T([0])([2])]));
+	var roads1 = STRUCT(REPLICA(4)([T([0,1,2])([40-c,39.2-d,0.5])(strada), T([1])([2.8])]));
+	var roads2 = STRUCT(REPLICA(n)([T([0,1,2])([40-c,39-d,0.5])(parallela), T([0,2])([2,-0.1])]));
 	var roads = STRUCT([roads1,roads2]);
 	return roads;
 }
-var out = STRUCT([ cartina, roads(0,0,6,10), roads(-3,18,4,10)]);
+var out = STRUCT([ cartina, roads(0,0,6,10), roads(-2.8,18,4,7)]);
 DRAW(out)
