@@ -217,3 +217,4 @@ function spada()	{
 }
 
 var model = spada();
+DRAW(model)
