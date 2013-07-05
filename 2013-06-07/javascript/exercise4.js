@@ -3,16 +3,19 @@
 //	exercise 4 - settlement
 
 var domain = DOMAIN([[0,50], [0,50], [0,5]])([10, 10, 10]);
-var points = new Array();
+
+function offset(){
+	return Math.random()*2-1;
+}
 
 var mapping = function(point)	{
 	var x = point[0];
 	var y = point[1];
 	var z = point[2];
 	var random = Math.random()*3-1;
-	points.push([x,y,z+random]);
 	return [x, y, z+random];
 }
+
 
 function mappa()	{
 	var domain1 = DOMAIN([[0,1], [0,1], [0,1]])([10, 10, 10]);
@@ -95,25 +98,24 @@ function tree()	{
 	return tree;
 }
 function dtmlt() {
-	var forest1 = STRUCT(REPLICA(6)([T([0,1,2])([40,2,6])(tree()), T([0,2])([1.5,-0.8])]));
-	var forest2 = STRUCT(REPLICA(6)([T([0,1,2])([40,3.5,6])(tree()), T([0,2])([1.5,-0.8])]));
-	var forest3 = STRUCT(REPLICA(6)([T([0,1,2])([40,5,6])(tree()), T([0,2])([1.5,-0.8])]));
-	var forest4 = STRUCT(REPLICA(6)([T([0,1,2])([40,6.5,6])(tree()), T([0,2])([1.5,-0.8])]));
-	var forest5 = STRUCT(REPLICA(6)([T([0,1,2])([40,8,7])(tree()), T([0,2])([1.5,-0.8])]));
-	var forest6 = STRUCT(REPLICA(6)([T([0,1,2])([40,9.5,7])(tree()), T([0,2])([1.5,-0.8])]));
+	var forest1 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),2+offset(),6])(tree()), T([0,2])([1.5 + offset(),-0.8])]));
+	var forest2 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),3.5+offset(),6])(tree()), T([0,2])([1.5+offset(),-0.8])]));
+	var forest3 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),5+offset(),6])(tree()), T([0,2])([1.5+offset(),-0.8])]));
+	var forest4 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),6.5+offset(),6])(tree()), T([0,2])([1.5+offset(),-0.8])]));
+	var forest5 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),8+offset(),7])(tree()), T([0,2])([1.5+offset(),-0.8])]));
+	var forest6 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),9.5+offset(),7])(tree()), T([0,2])([1.5+offset(),-0.8])]));
 
-	var forest7 = STRUCT(REPLICA(6)([T([0,1,2])([40,11,6])(tree()), T([0,2])([1.5,-0.8])]));
-	var forest8 = STRUCT(REPLICA(6)([T([0,1,2])([40,12.5,6])(tree()), T([0,2])([1.5,-0.8])]));
-	var forest9 = STRUCT(REPLICA(6)([T([0,1,2])([40,14,6])(tree()), T([0,2])([1.5,-0.8])]));
-	var forest10 = STRUCT(REPLICA(6)([T([0,1,2])([40,15.5,6])(tree()), T([0,2])([1.5,-0.8])]));
-	var forest11 = STRUCT(REPLICA(6)([T([0,1,2])([40,17,6])(tree()), T([0,2])([1.5,-0.8])]));
-	var forest12 = STRUCT(REPLICA(6)([T([0,1,2])([40,18.5,6])(tree()), T([0,2])([1.5,-0.8])]));
+	var forest7 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),11+offset(),6])(tree()), T([0,2])([1.5+offset(),-0.8])]));
+	var forest8 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),12.5+offset(),6])(tree()), T([0,2])([1.5+offset(),-0.8])]));
+	var forest9 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),14+offset(),6])(tree()), T([0,2])([1.5+offset(),-0.8])]));
+	var forest10 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),15.5+offset(),6])(tree()), T([0,2])([1.5+offset(),-0.8])]));
+	var forest11 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),17+offset(),6])(tree()), T([0,2])([1.5+offset(),-0.8])]));
+	var forest12 = STRUCT(REPLICA(6)([T([0,1,2])([40+offset(),18.5+offset(),6])(tree()), T([0,2])([1.5+offset(),-0.8])]));
 
 	var nat = STRUCT([ forest1, forest2, forest3, forest4, forest5, forest6, 
 						forest7, forest8, forest9, forest10, forest11, forest12, dtm() ]);
 	return nat;
 }
-
 function simple_house(h,l){
 	var points = [[0,0],[h,0],[h/2,h/2]];
 	var cells = [[0,1,2]];
@@ -124,12 +126,12 @@ function simple_house(h,l){
 }
 
 function settlement(c,d,n){
-	var houses1 = STRUCT(REPLICA(n)([T([0,1,2])([40-c,40-d,3])(simple_house(Math.random()+0.7, 
-		Math.random()+0.5)), T([0,2])([2,-0.5])]));
-	var houses2 = STRUCT(REPLICA(n)([T([0,1,2])([40-c,43-d,3])(simple_house(Math.random()+0.7, 
-		Math.random()+0.5)), T([0,2])([2,-0.5])]));
-	var houses3 = STRUCT(REPLICA(n)([T([0,1,2])([40-c,46-d,3])(simple_house(Math.random()+0.7, 
-		Math.random()+0.5)), T([0,2])([2,-0.5])]));
+	var houses1 = STRUCT(REPLICA(n)([T([0,1,2])([40-c+offset(),40-d+offset(),3])(simple_house(Math.random()+0.7, 
+		Math.random()+0.5)), T([0,2])([2+offset()-0.5,-0.5])]));
+	var houses2 = STRUCT(REPLICA(n)([T([0,1,2])([40-c+offset(),43-d+offset(),3])(simple_house(Math.random()+0.7, 
+		Math.random()+0.5)), T([0,2])([2+offset()-0.5,-0.5])]));
+	var houses3 = STRUCT(REPLICA(n)([T([0,1,2])([40-c+offset(),46-d+offset(),3])(simple_house(Math.random()+0.7, 
+		Math.random()+0.5)), T([0,2])([2+offset()-0.5,-0.5])]));
 
 	var paese = STRUCT([houses1, houses2, houses3]);
 	return paese;

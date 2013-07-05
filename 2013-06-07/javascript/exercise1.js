@@ -3,16 +3,19 @@
 //	exercise 1 - DTM Digital Terrain Model
 
 var domain = DOMAIN([[0,50], [0,50], [0,5]])([10, 10, 10]);
-var points = new Array();
+
+function offset(){
+	return Math.random()*2-1;
+}
 
 var mapping = function(point)	{
 	var x = point[0];
 	var y = point[1];
 	var z = point[2];
 	var random = Math.random()*3-1;
-	points.push([x,y,z+random]);
 	return [x, y, z+random];
 }
+
 
 function mappa()	{
 	var domain1 = DOMAIN([[0,1], [0,1], [0,1]])([10, 10, 10]);
