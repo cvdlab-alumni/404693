@@ -101,8 +101,8 @@ function tuboAnglat(Rag,rag,len,lar) {		//len e' la distanza tra ingresso ed usc
 
 var rotdom = DOMAIN([[0,1],[0,2*PI]])([32,32]);
 var lp = 2; 	//larghezza palo
-var h = 150; 	//altezza
-var hpo = 90;	//altezza portaombrello
+var h = 130; 	//altezza
+var hpo = 77;	//altezza portaombrello
 var nero = [0,0,0];
 
 function punta(lp,h,col){
@@ -320,8 +320,8 @@ function coppia(lp,h,ht){
 //	DRAW(coppia(lp,h,ht));
 
 function zanotta(){
-	return STRUCT([T([2])([350])(coppia(lp,120,ht)), T([0])([-150])(servonotte(lp,200,hpp,hs,nero)),
-					T([0])([150])(servopluvio(lp,150,hpo,nero)), 
+	return STRUCT([T([2])([0])(coppia(lp,120,ht)), T([0,2])([-150,350])(servonotte(lp,200,hpp,hs,nero)),
+					T([0,2])([150,350])(servopluvio(lp,130,hpo,nero)), 
 					T([0,2])([150,175])(R([0,2])(PI/2)(basello(darkgrey,PI))),
 					T([0,2])([-150,175])(R([0,2])(PI/2)(basello(bianco,PI))),]);
 }
