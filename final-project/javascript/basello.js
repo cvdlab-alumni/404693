@@ -14,7 +14,7 @@ function arc (alpha, r, R) {
 	return model;
 }
 
-var h = 45*1.5;			//altezza
+var hb = 45*1.5;			//altezza
 var larg = 65*1.5;		//larghezza
 var prof = 30*1.5;		//profondita'
 var sp = 3*1.5;			//spessore
@@ -24,15 +24,15 @@ var bianco = [1.5,1.5,1.5];
 var rot = PI/3;
 
 function basello(col,rot){
-	var pianosup = T([2])([h-sp])(CUBOID([larg,prof,sp]));
-	var pianosuplat = T([0])([larg-sp])(CUBOID([sp,prof,h]));
+	var pianosup = T([2])([hb-sp])(CUBOID([larg,prof,sp]));
+	var pianosuplat = T([0])([larg-sp])(CUBOID([sp,prof,hb]));
 	var basup = COLOR(col)(T([0,1])([-larg/5,-prof/2])(STRUCT([pianosup, pianosuplat])));
 
-	var cilindro = COLOR(nero)(T([2])([h/2-0.1-sp])(EXTRUDE([h/2+0.2+sp])(arc(2*PI,0,sp))));
+	var cilindro = COLOR(nero)(T([2])([hb/2-0.1])(EXTRUDE([hb/2+0.2])(arc(2*PI,0,sp))));
 
-	var pianoinf = T([2])([h/2-sp])(CUBOID([larg-2*sp,prof,sp]));
-	var pil1 = T([0])([larg-3*sp])(CUBOID([sp,prof,h/2]));
-	var pil2 = CUBOID([sp,prof,h/2]);
+	var pianoinf = T([2])([hb/2])(CUBOID([larg-2*sp,prof,sp]));
+	var pil1 = T([0])([larg-3*sp])(CUBOID([sp,prof,hb/2]));
+	var pil2 = CUBOID([sp,prof,hb/2]);
 	var basdw = COLOR(col)(T([0,1])([-larg/5,-prof/2])(STRUCT([pianoinf,pil1,pil2])));
 
 	var basello = R([1,2])(-PI/2)( STRUCT([basup,R([0,1])(-rot)(basdw),cilindro]));

@@ -96,7 +96,7 @@ function base(lp,col){
 	var mapping = ROTATIONAL_SURFACE(profile);
 	var base3 = MAP(mapping)(rotdom);
 	var base = COLOR(col)( R([2,1])(PI/2*3)( STRUCT([ base1,base2,base3 ])));
-	return base;
+	return S([0,1,2])([0.75,1,0.75])(base);
 }
 function portaombrelli(hpo,col){
 	var Rag = 2;

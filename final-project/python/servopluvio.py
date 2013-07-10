@@ -150,7 +150,7 @@ def base(lp,col):
     mapping = ROTATIONALSURFACE(profile)
     base3 = MAP(mapping)(rotdomR)
     base = COLOR(col)( R([3,2])(PI/2)( STRUCT([ base1,base2,base3 ])))
-    return base
+    return S([1,2,3])([0.75,1,0.75])(base)
 
 def portaombrelli(hpo,col):
     Rag = 2
