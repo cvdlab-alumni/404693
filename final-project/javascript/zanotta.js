@@ -127,7 +127,7 @@ function basesp(lp,col){
 	var mapping = ROTATIONAL_SURFACE(profile);
 	var base3 = MAP(mapping)(rotdom);
 	var base = COLOR(col)( R([2,1])(PI/2*3)( STRUCT([ base1,base2,base3 ])));
-	return S([0,1,2])([0.75,1,0.75])(base);
+	return S([0,1,2])([0.8,1,0.8])(base);
 }
 function portaombrelli(hpo,col){
 	var Rag = 2;
@@ -313,15 +313,17 @@ function servomuto(lp,h,ht,col){
 	return servomuto;
 }
 function coppia(lp,h,ht){
-	var coppia = STRUCT([	T([0])([-100])(servomuto(lp,h,ht,nero)), 
-							T([0])([140])(servomuto(lp,h,ht,bianco))	]);
+	var coppia = STRUCT([	T([0])([-150])(servomuto(lp,h,ht,nero)), 
+							T([0])([150])(servomuto(lp,h,ht,bianco))	]);
 	return coppia;
 }
 //	DRAW(coppia(lp,h,ht));
 
 function zanotta(){
-	return STRUCT([T([2])([300])(coppia(lp,120,ht)), T([0])([-200])(servonotte(lp,200,hpp,hs,nero)),
-					T([0])([220])(servopluvio(lp,150,hpo,nero)), basello(darkgrey,rot)]);
+	return STRUCT([T([2])([350])(coppia(lp,120,ht)), T([0])([-150])(servonotte(lp,200,hpp,hs,nero)),
+					T([0])([150])(servopluvio(lp,150,hpo,nero)), 
+					T([0,2])([150,175])(R([0,2])(PI/2)(basello(darkgrey,PI))),
+					T([0,2])([-150,175])(R([0,2])(PI/2)(basello(bianco,PI))),]);
 }
 
 DRAW(zanotta())
