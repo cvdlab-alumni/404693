@@ -1,1 +1,1 @@
-Final Project for Computational Graphics course at https://github.com/dav1razzino/dav1razzino.github.io
+Final Project for Computational Graphics course at http://dav1razzino.github.io
