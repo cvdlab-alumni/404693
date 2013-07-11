@@ -1,6 +1,6 @@
 //	Final Project
 //	Davide Razzino - 404693
-//	Intera linea Zanotta
+//	Ingresso linea Zanotta
 //	Achille Castiglioni
 
 // Basello
@@ -16,7 +16,7 @@ function arc (alpha, r, R) {
 	return model;
 }
 
-var hb = 45*1.5;			//altezza
+var hb = 45*1.5;		//altezza
 var larg = 65*1.5;		//larghezza
 var prof = 30*1.5;		//profondita'
 var sp = 3*1.5;			//spessore
