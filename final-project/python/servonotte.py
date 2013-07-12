@@ -221,3 +221,4 @@ def servonotte(lp,h,hpp,hs,col):
     return servonotte
 
 VIEW(servonotte(lp,h,hpp,hs,nero))
+#VIEW(STRUCT([pp(hpp,[1,1,1]), stampella(hs,[1,1,1])]))

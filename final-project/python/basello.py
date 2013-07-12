@@ -28,9 +28,9 @@ def basello(col,rot):
 	pianosuplat = T([1])([larg-sp])(CUBOID([sp,prof,h]))
 	basup = COLOR(col)(T([1,2])([-larg/5,-prof/2])(STRUCT([pianosup, pianosuplat])))
 
-	cilindro = COLOR(nero)(T([3])([h/2-0.1-sp])( PROD([arc(2*PI, 0, sp),Q(h/2+0.2+sp)]) ))
+	cilindro = COLOR(nero)(T([3])([h/2-0.1])( PROD([arc(2*PI, 0, sp),Q(h/2+0.2)]) ))
 
-	pianoinf = T([3])([h/2-sp])(CUBOID([larg-2*sp,prof,sp]))
+	pianoinf = T([3])([h/2])(CUBOID([larg-2*sp,prof,sp]))
 	pil1 = T([1])([larg-3*sp])(CUBOID([sp,prof,h/2]))
 	pil2 = CUBOID([sp,prof,h/2])
 	basdw = COLOR(col)(T([1,2])([-larg/5,-prof/2])(STRUCT([pianoinf,pil1,pil2])))

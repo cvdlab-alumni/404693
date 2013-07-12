@@ -1,6 +1,6 @@
 //	Final Project
 //	Davide Razzino - 404693
-//	Servomuto
+//	Servofumo
 //	Achille Castiglioni
 
 function arc (alpha, r, R) {
@@ -14,11 +14,12 @@ function arc (alpha, r, R) {
 	return model;
 }
 
+var domain = PROD1x1([INTERVALS(1)(14),INTERVALS(1)(14)]);
+
 var rotdom = DOMAIN([[0,1],[0,2*PI]])([32,32]);
-var lp = 2; 		//larghezza palo
-var h = 120; 		//altezza
-var ht = h*65/100; 	//altezza del piano
-var bianco = [1.5,1.5,1.5];
+var lp = 2; 	//larghezza palo
+var h = 150; 	//altezza
+var hpc = 90;	//altezza posacenere
 var nero = [0,0,0];
 
 function punta(lp,h,col){
@@ -41,21 +42,22 @@ function base(lp,col){
 	var base = STRUCT([ base1,base2 ]);
 	return base;
 }
-function tavolo(lp,ht){
-	var up = T([1])([-0.1])( COLOR(bianco)( R([2,1])(PI/2*3)( arc(2*PI,lp,34.5) )));
-	var dw = T([1])([2.2])(up);
-	var centro = R([2,1])(PI/2*3)(  COLOR( nero )( EXTRUDE([1.5])(	arc(2*PI,lp,35)	)));
-	var tavolo = T([1])([ht])( STRUCT([ up,dw, centro ]) );
-	return tavolo;
+function posacenere(lp,hpc,col){
+	var profile = BEZIER(S0)([[lp,0,20],[9,0,21],[18,0,18],[15,0,16],[15,0,16],[18,0,-30],
+								[40,0,-10],[32,0,10],[38,0,30],[40,0,30],[40,0,30],[32,0,0]]);
+	var mapping = ROTATIONAL_SURFACE(profile);
+	var base1 = MAP(mapping)(rotdom);
+	var base2 = arc(2*PI,lp,32);
+	var profile = BEZIER(S0)([[38,0,25],[45,0,25],[38,0,21]]); //bordino
+	var mapping = ROTATIONAL_SURFACE(profile);
+	var base3 = MAP(mapping)(rotdom);
+	var base = COLOR(col)( R([2,1])(PI/2*3)( STRUCT([ base1,base2,base3 ])));
+	return T([1])([hpc])(S([0,1,2])([0.6,0.6,0.6])(base));
 }
-function servomuto(lp,h,ht,col){
-	var servomuto = STRUCT([	punta(lp,h,col), palo(lp,h,col), base(lp,col), tavolo(lp,ht)	]);
-	return servomuto;
-}
-function coppia(lp,h,ht){
-	var coppia = STRUCT([	T([0])([-40])(servomuto(lp,h,ht,nero)), 
-							T([0])([40])(servomuto(lp,h,ht,bianco))	]);
-	return coppia;
+function servofumo(lp,h,hpc,col){
+	var servofumo = STRUCT([	punta(lp,h,col), palo(lp,h,col), base(lp,col), posacenere(lp,hpc,col)	]);
+	return servofumo;
 }
 
-DRAW(coppia(lp,h,ht));
+//DRAW(servofumo(lp,h,hpc,[1,1,1]));
+DRAW(posacenere(lp,hpc,[1,1,1]))
