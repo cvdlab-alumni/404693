@@ -59,5 +59,5 @@ function servofumo(lp,h,hpc,col){
 	return servofumo;
 }
 
-//DRAW(servofumo(lp,h,hpc,[1,1,1]));
-DRAW(posacenere(lp,hpc,[1,1,1]))
+DRAW(servofumo(lp,h,hpc,nero));
+//DRAW(posacenere(lp,hpc,[1,1,1]))
