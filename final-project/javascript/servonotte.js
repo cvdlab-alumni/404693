@@ -169,4 +169,5 @@ function servonotte(lp,h,hpp,hs,col){
 	return servonotte;
 }
 
+
 DRAW(servonotte(lp,h,hpp,hs,nero));

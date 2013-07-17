@@ -38,4 +38,6 @@ def basello(col,rot):
 	basello = STRUCT([basup,R([1,2])(rot)(basdw),cilindro])
 	return basello
 
+
+
 VIEW(basello(darkgrey,rot))

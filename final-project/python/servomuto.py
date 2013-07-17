@@ -109,4 +109,5 @@ def coppia(lp,h,ht):
                             T([1])([40])(servomuto(lp,h,ht,bianco)) ])
     return coppia
 
+
 VIEW(coppia(lp,h,ht))

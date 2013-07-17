@@ -220,5 +220,6 @@ def servonotte(lp,h,hpp,hs,col):
     servonotte = STRUCT([   punta(lp,h,col), palo(lp,h,col), base(lp,col), pp(hpp,col), stampella(hs,col) ])
     return servonotte
 
+
 VIEW(servonotte(lp,h,hpp,hs,nero))
 #VIEW(STRUCT([pp(hpp,[1,1,1]), stampella(hs,[1,1,1])]))

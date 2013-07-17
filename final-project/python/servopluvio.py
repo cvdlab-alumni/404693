@@ -187,4 +187,6 @@ def servopluvio(lp,h,hpo,col):
     servopluvio = STRUCT([  punta(lp,h,col), palo(lp,h,col), base(lp,col), portaombrelli(hpo,col)   ])
     return servopluvio
 
+
+
 VIEW(servopluvio(lp,h,hpo,nero))

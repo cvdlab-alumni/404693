@@ -391,4 +391,5 @@ function zanotta(){
 					T([0,2])([-150,35])(servofumo(lp,110,hpc,nero))	]);
 }
 
+
 DRAW(zanotta())

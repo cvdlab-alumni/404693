@@ -115,5 +115,7 @@ def servofumo(lp,h,hpo,col):
     servofumo = STRUCT([  punta(lp,h,col), palo(lp,h,col), base(lp,col), posacenere(lp,hpo,col)   ])
     return servofumo
 
+
+
 VIEW(servofumo(lp,h,hpc,nero))
 #VIEW(STRUCT([posacenere(lp,hpc,[1,1,1]), base(lp,[1,1,1])]))
